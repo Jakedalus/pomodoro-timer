@@ -1,0 +1,77 @@
+body {
+    margin: 0 auto;
+    width: 30%;
+}
+
+#container {
+    margin-top: 100px;
+}
+
+#circle-timer {
+    fill: gray;
+    stroke: red;
+    stroke-width: 50;
+    stroke-dasharray: 0 158;
+    
+}
+
+.break-timer {
+    stroke: green; 
+}
+
+svg {
+    transform: rotate(-90deg);
+    background: gray;
+    border-radius: 50%;
+
+}
+
+text {
+    transform: rotate(90deg);
+    font-family="Verdana";
+    font-size="25";
+}
+
+#cover {
+    fill: white;
+}
+
+#controls {
+    margin-top: 10px;
+}
+
+.control {
+    display: inline-block;
+    width: 48%;
+    height: 100px;
+}
+
+h3 {
+    
+    text-align: center;
+}
+
+p {
+    margin-top: -15px;
+    font-size: 2em;
+    text-align: center;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+
+@media (max-width: 900px) { 
+    body {
+        width: 50%;
+    }
+}
+
+@media (max-width: 400px) { 
+    body {
+        width: 80%;
+    }
+}
+
