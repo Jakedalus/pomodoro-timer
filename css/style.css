@@ -3,18 +3,20 @@ body {
     width: 80%;
 }
 
-/*
 #container {
-    display: flex;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 30%;
 
 }
-*/
 
+/*
 #timer-container {
     margin: 0 auto;
     margin-top: 100px;
     width: 30%;
 }
+*/
 
 #circle-timer {
     fill: gray;
@@ -49,20 +51,61 @@ text {
 #settings-panel {
     position: relative;
     display: inline-block;
-    top: -18em;
-    left: 105%;
+    top: 0;
+    left: 0;
     width: 300px;   
-
+    height: 100%;
 }
 
 #settings {
-    visibility: hidden;
+/*    visibility: hidden;*/
+    padding-left: 15px;
     position: absolute;
     z-index: 1;
     left: 30%;
     margin-left: -60px;
-    height: 100%;
+    height: 0px;
+    border: 2px solid clear;
+    background-color: white;
+    overflow: hidden;
+    transition: height .5s, border .5s, background-color .5s;
+    
+}
 
+#settings.slide-out {
+    height: 450px;
+    border: 2px solid black;
+    background-color: lightgray;
+}
+
+
+
+.animate-on {
+    animation: .5s forwards turnOn;
+}
+
+.animate-off {
+    animation: .5s forwards turnOff;
+}
+
+@keyframes turnOn {
+    from {
+        transform: rotate(0.0turn);
+    }
+    
+    to {
+        transform: rotate(0.167turn);
+    }
+}
+
+@keyframes turnOff {
+    from {
+        transform: rotate(0.167turn);
+    }
+    
+    to {
+        transform: rotate(0.0turn);
+    }
 }
 
 .control {
@@ -122,7 +165,7 @@ a {
         width: 50%;
     }
     
-    #timer-container {
+    #container {
         width: 60%;
     }
     
@@ -135,14 +178,16 @@ a {
     }
     
     #settings-panel {
-        top: 0;
-        left: 0;
         font-size: .8em;
         width: 200px;
     }
     
     #settings {
         left: 30%;
+    }
+    
+    .slide-out {
+        height: 300px !important;
     }
 }
 
@@ -151,7 +196,7 @@ a {
         width: 80%;
     }
     
-    #timer-container {
+    #container {
         width: 50%;
     }
     
@@ -164,14 +209,16 @@ a {
     }
     
     #settings-panel {
-        top: 0;
-        left: 0;
         font-size: .6em;
-        width: 150px; 
+        width: 200px; 
     }
     
     #settings {
         left: 50%;
+    }
+    
+    .slide-out {
+        height: 250px !important;
     }
 }
 

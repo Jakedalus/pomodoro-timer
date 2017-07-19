@@ -1,5 +1,5 @@
-var sessionLength = .1;
-var breakLength = .1;
+var sessionLength = 25;
+var breakLength = 5;
 
 var workTimer = sessionLength * 60 * 1000;
 var breakTimer = breakLength * 60 * 1000;
@@ -33,6 +33,7 @@ var settingsBtn = document.querySelector("#settings-btn");
 var settingsPanel = document.querySelector("#settings");
 var log = document.querySelector("#log");
 var graph = document.querySelector("#graph");
+
 
 timerText.textContent = sessionLength + ":00";
 circle.style.strokeDasharray = p + " 158";
@@ -194,7 +195,22 @@ function handleTimer() {
 }
 
 settingsBtn.addEventListener("click", function(e) {
-    settingsPanel.style.visibility == "visible" ? settingsPanel.style.visibility = "hidden" : settingsPanel.style.visibility = "visible"; 
+//    settingsBtn.classList.toggle("animate-on");
+//    settingsBtn.classList.toggle("animate-off");
+//    settingsPanel.classList.toggle("slide-in");
+//    settingsPanel.classList.toggle("slide-out");
+    
+    if(!settingsPanel.classList.contains("slide-out")) {
+//        settingsPanel.style.visibility = "visible"; 
+        settingsBtn.classList.remove("animate-off");
+        settingsBtn.classList.add("animate-on");
+        settingsPanel.classList.add("slide-out");
+    } else {    
+//        settingsPanel.style.visibility = "hidden";
+        settingsBtn.classList.remove("animate-on");
+        settingsBtn.classList.add("animate-off");
+        settingsPanel.classList.remove("slide-out");
+    } 
 });
 
 
