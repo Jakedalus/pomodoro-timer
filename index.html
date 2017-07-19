@@ -12,28 +12,51 @@
     <body>
         
         <div id="container">
-            <svg viewBox="0 0 100 100">
+        
+            
+            <div id="timer-container">
+                <svg viewBox="0 0 100 100">
+
+                    <circle r="25" cx="50" cy="50" id="circle-timer"/>
+
+                    <circle r="40" cx="50" cy="50" id="cover"/>
+                    <text id="timer" text-anchor="middle" x="50%" y="-45%"></text>
+                    <text id="play-pause" text-anchor="middle" x="50%" y="-25%">&#9658;</text>
+
+                </svg>   
                 
-                <circle r="25" cx="50" cy="50" id="circle-timer"/>
-                
-                <circle r="40" cx="50" cy="50" id="cover"/>
-                <text id="timer" text-anchor="middle" x="50%" y="-45%"></text>
-                <text id="play-pause" text-anchor="middle" x="50%" y="-25%">&#9658;</text>
-                
-            </svg>   
+            
+
+            <div id="settings-panel">
+                <a href=#><i id="settings-btn" class="material-icons">settings</i></a>
+
+                <div id="settings">
+                    <div id="controls" class="hide">
+                        <div id="session-control" class="control">
+                            <h3>Session Length</h3>
+                            <p><a href="#"  id="ds">-</a> <span id="sl">25</span> <a href="#" id="us">+</a></p>
+                        </div>
+
+                        <div id="break-control" class="control">
+                            <h3>Break Length</h3>
+                            <p><a href="#" id="db">-</a> <span id="bl">5</span> <a href="#" id="ub">+</a></p>
+                        </div>       
+                    </div>
+
+                    <div id="log">
+                        <h3>History</h3>
+                        <ul></ul>
+                        <div id="graph"></div>
+                    </div>
+
+                </div>        
+            </div>
+                </div>
+            
         </div>
         
-        <div id="controls">
-            <div id="session-control" class="control">
-                <h3>Session Length</h3>
-                <p><a href="#"  id="ds">-</a> <span id="sl">25</span> <a href="#" id="us">+</a></p>
-            </div>
-
-            <div id="break-control" class="control">
-                <h3>Break Length</h3>
-                <p><a href="#" id="db">-</a> <span id="bl">5</span> <a href="#" id="ub">+</a></p>
-            </div>       
-        </div>
+        
+        
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

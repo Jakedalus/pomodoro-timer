@@ -1,10 +1,19 @@
 body {
     margin: 0 auto;
-    width: 30%;
+    width: 80%;
 }
 
+/*
 #container {
+    display: flex;
+
+}
+*/
+
+#timer-container {
+    margin: 0 auto;
     margin-top: 100px;
+    width: 30%;
 }
 
 #circle-timer {
@@ -13,10 +22,6 @@ body {
     stroke-width: 50;
     stroke-dasharray: 0 158;
     
-}
-
-.break-timer {
-    stroke: green; 
 }
 
 svg {
@@ -38,22 +43,46 @@ text {
 
 #controls {
     margin-top: 10px;
+    
+}
+
+#settings-panel {
+    position: relative;
+    display: inline-block;
+    top: -18em;
+    left: 105%;
+    width: 300px;   
+
+}
+
+#settings {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    left: 30%;
+    margin-left: -60px;
+    height: 100%;
+
 }
 
 .control {
     display: inline-block;
-    width: 48%;
+    width: 60%;
     height: 100px;
+}
+
+#log {
+    width: 60%;
 }
 
 h3 {
     
-    text-align: center;
+/*    text-align: center;*/
 }
 
 p {
     margin-top: -15px;
-    font-size: 2em;
+    font-size: 1.4em;
     text-align: center;
 }
 
@@ -63,15 +92,86 @@ a {
 }
 
 
+
+#graph {
+    height: 100px;
+    width: 100px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    position: relative;
+    left: 40%;
+}
+
+.bar {
+    background-color: green;
+    position: relative;
+    height: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px; 
+}
+
+.label {
+    position: absolute;
+    left: -30px;
+    top: 1px;  
+    font-size: .8em;
+}
+
 @media (max-width: 900px) { 
     body {
         width: 50%;
+    }
+    
+    #timer-container {
+        width: 60%;
+    }
+    
+    .control {
+        height: 50px;
+    }
+    
+    #settings-btn {
+        font-size: 1.5em;
+    }
+    
+    #settings-panel {
+        top: 0;
+        left: 0;
+        font-size: .8em;
+        width: 200px;
+    }
+    
+    #settings {
+        left: 30%;
     }
 }
 
 @media (max-width: 400px) { 
     body {
         width: 80%;
+    }
+    
+    #timer-container {
+        width: 50%;
+    }
+    
+    .control {
+        height: 40px;
+    }
+    
+    #settings-btn {
+        font-size: 1.5em;
+    }
+    
+    #settings-panel {
+        top: 0;
+        left: 0;
+        font-size: .6em;
+        width: 150px; 
+    }
+    
+    #settings {
+        left: 50%;
     }
 }
 

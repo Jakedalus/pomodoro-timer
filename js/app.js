@@ -1,5 +1,5 @@
-var sessionLength = 25;
-var breakLength = 5;
+var sessionLength = .1;
+var breakLength = .1;
 
 var workTimer = sessionLength * 60 * 1000;
 var breakTimer = breakLength * 60 * 1000;
@@ -11,6 +11,17 @@ var totalCircle = 158;
 var p = percent * totalCircle;
 var now, then;
 
+// Set up localStorage completed
+var t = new Date();
+var today = t.getMonth() + "/" + t.getDate() + "/" + t.getFullYear();
+console.log(today);
+console.log(localStorage);
+var completed = JSON.parse(localStorage.getItem("completed"));
+console.log(JSON.parse(localStorage.getItem("completed")));
+
+console.log("completed: ", completed);
+
+
 // DOM elements
 var circle = document.querySelector("#circle-timer");
 var timerText = document.querySelector("#timer");
@@ -18,6 +29,10 @@ var playPause = document.querySelector("#play-pause");
 var controls = document.querySelector("#controls");
 var sessionLbl = document.querySelector("#sl");
 var breakLbl = document.querySelector("#bl");
+var settingsBtn = document.querySelector("#settings-btn");
+var settingsPanel = document.querySelector("#settings");
+var log = document.querySelector("#log");
+var graph = document.querySelector("#graph");
 
 timerText.textContent = sessionLength + ":00";
 circle.style.strokeDasharray = p + " 158";
@@ -28,6 +43,32 @@ var isPlaying = false;
 var wasPaused, timeLeft, t;
 
 var wasSwitched = false;
+
+function printLog() {
+    var ul = document.querySelector("#log ul");
+    ul.innerHTML = "";
+    for(var day in completed) {
+        console.log("Day: ", day);
+//        var li = document.createElement("li");
+//        li.textContent = day + ": " + completed[day];
+//        ul.appendChild(li);
+        
+        var bar = document.createElement("div");
+        var width = (completed[day] / 20) * 100;
+        bar.classList.add("bar");
+        bar.style.width = width + "%";
+        var p = document.createElement("span");
+        var parsedDay = day.replace(/\/\d{4}/g, "");
+        p.textContent = parsedDay;
+        p.classList.add("label");
+        bar.insertBefore(p, null);
+        console.log("Bar: ", bar);
+        graph.appendChild(bar);
+        console.log(graph);
+    };
+    
+    
+}
 
 function setTimer() {
     now = new Date().getTime();
@@ -59,8 +100,6 @@ function handleControls(e) {
         breakLbl.textContent = breakLength;
     }
 }
-
-
 
 function handleTimer() {
     
@@ -121,9 +160,31 @@ function handleTimer() {
             if(mins <= 0 && secs <= 0) {
                 timerText.textContent = "End";
                 clearInterval(t);
-                currentSession == "work" ? currentSession = "break" : currentSession = "work";
+                
+                if(currentSession == "work") {
+                    // Keep track of sessions via localStorage
+                    if(completed == null) {
+                        completed = {}
+                    }
+                    if(completed[today] != undefined) {
+                        completed[today]++;
+                    } else {
+                        completed[today] = 1;
+                    }
+                    localStorage.setItem("completed", JSON.stringify(completed));
+
+                    console.log(completed, localStorage);
+                    currentSession = "break";
+                    printLog();
+                } else {
+                    currentSession = "work";
+                }
+                
                 isPlaying = true;
                 wasSwitched = true;
+                
+                
+                
                 handleTimer();
             }
 
@@ -132,12 +193,18 @@ function handleTimer() {
     }
 }
 
+settingsBtn.addEventListener("click", function(e) {
+    settingsPanel.style.visibility == "visible" ? settingsPanel.style.visibility = "hidden" : settingsPanel.style.visibility = "visible"; 
+});
 
 
 playPause.addEventListener("click", function(e) {    
     handleTimer();
 });
 
+
+controls.addEventListener("click", handleControls);
+printLog();
 
 
 
