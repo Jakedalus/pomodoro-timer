@@ -49,14 +49,34 @@ function printLog() {
     var ul = document.querySelector("#log ul");
     graph.innerHTML = "";
 //    ul.innerHTML = "";
-    for(var day in completed) {
+    var oneDay = (1000 * 60 * 60 * 24);
+    var todaysDate = new Date();
+    var dates = [];
+    
+    for(var i = 0; i < 5; i++) {
+        var date = new Date(todaysDate - (i * oneDay));
+        
+        dates.push(date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear());
+    }
+    
+    console.log("Dates: ", dates);
+    
+//    for(var day in completed) {
+    var days = Object.keys(completed);
+    console.log("Days: ", days);
+    for(var i = 4; i >= 0; i--) {
+        var day = dates[i];
         console.log("Day: ", day);
+        
+        var cd;
+        completed[day] == undefined ? cd = 0 : cd = completed[day];
+        console.log(cd);
 //        var li = document.createElement("li");
 //        li.textContent = day + ": " + completed[day];
 //        ul.appendChild(li);
         
         var bar = document.createElement("div");
-        var width = (completed[day] / 20) * 100;
+        var width = (cd / 20) * 100;
         bar.classList.add("bar");
         bar.style.width = width + "%";
         var p = document.createElement("span");
@@ -68,6 +88,15 @@ function printLog() {
         graph.appendChild(bar);
         console.log(graph);
     };
+    
+    var yAxis = document.createElement("p");
+    var xAxis = document.createElement("p");
+    yAxis.textContent = "Date";
+    xAxis.textContent = "Pomodoros";
+    yAxis.classList.add("y-axis");
+    xAxis.classList.add("x-axis");
+    graph.appendChild(yAxis);
+    graph.appendChild(xAxis);
     
     
 }
