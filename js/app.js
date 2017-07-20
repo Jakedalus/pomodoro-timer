@@ -1,5 +1,5 @@
-var sessionLength = 25;
-var breakLength = 5;
+var sessionLength = .1;
+var breakLength = .1;
 
 var workTimer = sessionLength * 60 * 1000;
 var breakTimer = breakLength * 60 * 1000;
@@ -47,7 +47,8 @@ var wasSwitched = false;
 
 function printLog() {
     var ul = document.querySelector("#log ul");
-    ul.innerHTML = "";
+    graph.innerHTML = "";
+//    ul.innerHTML = "";
     for(var day in completed) {
         console.log("Day: ", day);
 //        var li = document.createElement("li");
