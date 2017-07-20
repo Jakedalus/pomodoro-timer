@@ -1,3 +1,7 @@
+// [] CHANGE SCALE BASED ON MAX POMODOROS
+// [] STYLE BETTER
+// [] GIVE ALARM SOUND OPTIONS
+
 var sessionLength = .1;
 var breakLength = .1;
 
@@ -33,7 +37,7 @@ var settingsBtn = document.querySelector("#settings-btn");
 var settingsPanel = document.querySelector("#settings");
 var log = document.querySelector("#log");
 var graph = document.querySelector("#graph");
-
+var bell = new Audio("https://u7547051.dl.dropboxusercontent.com/u/7547051/assets/346328__isteak__bright-tibetan-bell-ding-b-note-cleaner.wav");
 
 timerText.textContent = sessionLength + ":00";
 circle.style.strokeDasharray = p + " 158";
@@ -41,7 +45,7 @@ circle.style.strokeDasharray = p + " 158";
 var timerStarted = false;
 var isPlaying = false;
 
-var wasPaused, timeLeft, t;
+var wasPaused, timeLeft, t, blinker;
 
 var wasSwitched = false;
 
@@ -111,6 +115,21 @@ function setTimer() {
     wasPaused = false;
 }
 
+function blink() {
+    
+    blinker = window.setInterval(function() {
+        timerText.style.fill = timerText.style.fill == 'red' ? 'blue' : 'red';
+    }, 500);
+}
+
+function stopAlarm() {
+    bell.pause();
+    bell.currentTime = 0;
+    window.clearInterval(blinker);
+    timerText.style.fill = 'black';
+    console.log(timerText.style.fill);
+}
+
 function handleControls(e) {
     var clicked = e.target.id; 
     if(clicked == "us") {
@@ -134,6 +153,7 @@ function handleControls(e) {
 
 function handleTimer() {
     
+    // Check if the timer is already running
     if(isPlaying) {
         controls.addEventListener("click", handleControls);
         console.log("Pausing...", isPlaying, timeLeft);
@@ -141,14 +161,15 @@ function handleTimer() {
         isPlaying = false;
         wasSwitched ? wasPaused = false : wasPaused = true;
         playPause.innerHTML = '&#9658;';
-    } else {
+    } else {  // If the timer was paused or not started yet
         controls.removeEventListener("click", handleControls);
         now = new Date().getTime();
-        if(wasSwitched) {
+        if(wasSwitched) {  // Timer restarted, from session to break or vice versa
             circle.style.strokeDasharray = "0 158";
             wasSwitched = false;
         }
 
+        // Determines which type of timer to start
         if(currentSession == "work") {
             currentTimer = workTimer
             circle.style.stroke = "red";
@@ -167,7 +188,7 @@ function handleTimer() {
         t = window.setInterval(function() {
             now = new Date().getTime();
 
-            if(wasPaused) {
+            if(wasPaused) {  // if the timer was paused, as opposed to switched
                 then = now + timeLeft;
                 wasPaused = false;
             } else {
@@ -188,9 +209,13 @@ function handleTimer() {
             console.log(p);
             timerText.textContent = formattedMins + ":" + formattedSecs;
 
-            if(mins <= 0 && secs <= 0) {
+            // Timer runs down
+            if(mins <= 0 && secs <= 0) {  
                 timerText.textContent = "End";
+                
                 clearInterval(t);
+                bell.play();
+                blink();
                 
                 if(currentSession == "work") {
                     // Keep track of sessions via localStorage
@@ -245,7 +270,13 @@ settingsBtn.addEventListener("click", function(e) {
 
 
 playPause.addEventListener("click", function(e) {    
+    stopAlarm();
     handleTimer();
+});
+
+timerText.addEventListener("click", function() {
+    stopAlarm();
+    timerText.style.fill == 'black';
 });
 
 

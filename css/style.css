@@ -37,6 +37,7 @@ text {
     transform: rotate(90deg);
     font-family="Verdana";
     font-size="25";
+    fill: black;
 }
 
 #cover {
@@ -153,6 +154,7 @@ a {
     height: 16px;
     margin-top: 8px;
     margin-bottom: 8px; 
+    max-width: 100%;
 }
 
 .label {
