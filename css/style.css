@@ -1,14 +1,12 @@
 body {
-    margin: 0 auto;
-    width: 80%;
-}
+  margin: 0 auto;
+  width: 80%;
+  background-color: #2264b2; }
 
 #container {
-    margin: 0 auto;
-    margin-top: 100px;
-    width: 30%;
-
-}
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 350px; }
 
 /*
 #timer-container {
@@ -17,235 +15,187 @@ body {
     width: 30%;
 }
 */
-
 #circle-timer {
-    fill: gray;
-    stroke: red;
-    stroke-width: 50;
-    stroke-dasharray: 0 158;
-    
-}
+  fill: #6d7c8a;
+  stroke: #c92435;
+  stroke-width: 50;
+  stroke-dasharray: 0 158; }
 
 svg {
-    transform: rotate(-90deg);
-    background: gray;
-    border-radius: 50%;
-
-}
+  transform: rotate(-90deg);
+  background: #6d7c8a;
+  border-radius: 50%;
+  height: 350px; }
 
 text {
-    transform: rotate(90deg);
-    font-family="Verdana";
-    font-size="25";
-    fill: black;
-}
+  transform: rotate(90deg);
+  font-family: "Verdana";
+  font-size: "25";
+  fill: #9bb0c4;
+  transition: text-shadow .1s;
+  text-shadow: none; }
 
 #cover {
-    fill: white;
-}
+  fill: #2264b2; }
 
 #controls {
-    margin-top: 10px;
-    
-}
+  margin-top: 10px; }
+
+#settings-btn {
+  color: #9bb0c4; }
 
 #settings-panel {
-    position: relative;
-    display: inline-block;
-    top: 0;
-    left: 0;   
-
-}
+  position: relative;
+  display: inline-block;
+  top: 0;
+  left: 0; }
 
 #settings {
-/*    visibility: hidden;*/
-    padding-left: 15px;
-    position: absolute;
-    z-index: 1;
-    left: 350%;
-    margin-left: -60px;
-    height: 0px;
-    width: 0px;
-    border: 2px solid clear;
-    background-color: white;
-    overflow: hidden;
-    transition: height .5s, width .5s, border .5s, background-color .5s;
-    
-}
+  /*    visibility: hidden;*/
+  padding-left: 15px;
+  position: absolute;
+  z-index: 1;
+  left: 350%;
+  margin-left: -60px;
+  height: 0px;
+  width: 0px;
+  border: 2px solid clear;
+  background-color: black;
+  overflow: hidden;
+  transition: height .5s, width .5s, border .5s, background-color .5s; }
 
 #settings.slide-out {
-    height: 450px;
-    width: 250px;
-    border: 2px solid black;
-    background-color: lightgray;
-}
-
-
+  height: 450px;
+  width: 250px;
+  border: 2px solid black;
+  background-color: #9bb0c4; }
 
 .animate-on {
-    animation: .5s forwards turnOn;
-}
+  animation: .5s forwards turnOn; }
 
 .animate-off {
-    animation: .5s forwards turnOff;
-}
+  animation: .5s forwards turnOff; }
 
 @keyframes turnOn {
-    from {
-        transform: rotate(0.0turn);
-    }
-    
-    to {
-        transform: rotate(0.25turn);
-    }
-}
-
+  from {
+    transform: rotate(0turn); }
+  to {
+    transform: rotate(0.25turn); } }
 @keyframes turnOff {
-    from {
-        transform: rotate(0.25turn);
-    }
-    
-    to {
-        transform: rotate(0.0turn);
-    }
-}
-
+  from {
+    transform: rotate(0.25turn); }
+  to {
+    transform: rotate(0turn); } }
 .control {
-    display: inline-block;
-    width: 60%;
-    height: 100px;
-}
+  display: inline-block;
+  width: 60%;
+  height: 100px; }
 
 #log {
-    width: 60%;
-}
+  width: 60%; }
 
 h3 {
-    
-/*    text-align: center;*/
-}
+  /*    text-align: center;*/ }
 
 p {
-    margin-top: -15px;
-    font-size: 1.4em;
-    text-align: left;
-    padding-left: 10px;
-}
+  margin-top: -15px;
+  font-size: 1.4em;
+  text-align: left;
+  padding-left: 10px; }
 
 a {
-    color: black;
-    text-decoration: none;
-}
-
-
+  color: black;
+  text-decoration: none; }
 
 #graph {
-    height: 120px;
-    width: 120px;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    position: relative;
-    left: 40%;
-}
+  height: 120px;
+  width: 120px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  position: relative;
+  left: 40%; }
 
 .bar {
-    background-color: green;
-    position: relative;
-    height: 16px;
-    margin-top: 8px;
-    margin-bottom: 8px; 
-    max-width: 100%;
-}
+  background-color: #00a380;
+  position: relative;
+  height: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  max-width: 100%; }
 
 .label {
-    position: absolute;
-    left: -30px;
-    top: 1px;  
-    font-size: .8em;
-
-}
+  position: absolute;
+  left: -30px;
+  top: 1px;
+  font-size: .8em; }
 
 .y-axis {
-    position: relative;
-    left: -100%;
-    top: -90px;
-    transform: rotate(-90deg);
-    font-size: 1em;
-}
+  position: relative;
+  left: -100%;
+  top: -90px;
+  transform: rotate(-90deg);
+  font-size: 1em; }
 
 .x-axis {
-    position: relative;
-    top: 5px;
-    left: -10%;
-    text-align: center;
-    font-size: 1em;
-}
+  position: relative;
+  top: 5px;
+  left: -10%;
+  text-align: center;
+  font-size: 1em; }
 
-@media (max-width: 900px) { 
-    body {
-        width: 50%;
-    }
-    
-    #container {
-        width: 60%;
-    }
-    
-    .control {
-        height: 50px;
-    }
-    
-    #settings-btn {
-        font-size: 1.5em;
-    }
-    
-    #settings-panel {
-        font-size: .8em;
-        width: 180px;
-    }
-    
-    #settings {
-        left: 30%;
-    }
-    
-    .slide-out {
-        height: 320px !important;
-    }
-}
+@media (max-width: 900px) {
+  body {
+    width: 50%; }
 
-@media (max-width: 400px) { 
-    body {
-        width: 80%;
-    }
-    
-    #container {
-        width: 50%;
-    }
-    
-    .control {
-        height: 40px;
-    }
-    
-    #settings-btn {
-        font-size: 1.5em;
-    }
-    
-    #settings-panel {
-        font-size: .6em;
-        width: 220px; 
-    }
-    
-    #settings.slide-out {
-        height: 250px;
-        width: 200px;
-    }
-    
-    .y-axis {
-        left: -90%;
-    }
-    
-    .x-axis {
-        top: 20px;
+  #container {
+    width: 250px; }
 
-    }
-}
+  svg {
+    height: 250px; }
 
+  .control {
+    height: 50px; }
+
+  #settings-btn {
+    font-size: 1.5em; }
+
+  #settings-panel {
+    font-size: .8em;
+    width: 180px; }
+
+  #settings {
+    left: 30%; }
+
+  .slide-out {
+    height: 320px !important; } }
+@media (max-width: 400px) {
+  body {
+    width: 80%; }
+
+  #container {
+    width: 200px; }
+
+  svg {
+    height: 200px; }
+
+  .control {
+    height: 40px; }
+
+  #settings-btn {
+    font-size: 1.5em; }
+
+  #settings-panel {
+    font-size: .6em;
+    width: 220px; }
+
+  #settings.slide-out {
+    height: 250px;
+    width: 200px; }
+
+  .y-axis {
+    left: -90%; }
+
+  .x-axis {
+    top: 20px; } }
+
+/*# sourceMappingURL=style.css.map */
