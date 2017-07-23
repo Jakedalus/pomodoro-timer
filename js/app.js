@@ -3,6 +3,7 @@
 // [] GIVE ALARM SOUND OPTIONS
 // [x] SAVE SETTINGS/TIMER LENGTHS
 // [x] DON'T LET LENGTHS GO LESS THAN 1 (OR MORE THAN 99?)
+// [] TIMER FUCKS UP WHEN YOU STOP, NEED TO DETACH FROM SYSTEM TIME
 
 function Timer() {
 if(localStorage.sessionLength == undefined) {

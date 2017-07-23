@@ -16,14 +16,15 @@ body {
 }
 */
 #circle-timer {
-  fill: #6d7c8a;
+  fill: #9bb0c4;
   stroke: #c92435;
   stroke-width: 50;
   stroke-dasharray: 0 158; }
 
 svg {
   transform: rotate(-90deg);
-  background: #6d7c8a;
+  background: #9bb0c4;
+  background: #778694;
   border-radius: 50%;
   height: 350px; }
 

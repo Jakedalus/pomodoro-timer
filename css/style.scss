@@ -1,7 +1,7 @@
 $background-color: rgb(34, 100, 178);
 $session-color: rgb(201, 36, 53);
 $break-color: rgb(0, 163, 128);
-$timer-color: rgb(109, 124, 138);
+$timer-color: rgb(119, 134, 148);
 $settings-color: rgb(155, 176, 196);
 
 
@@ -27,7 +27,7 @@ body {
 */
 
 #circle-timer {
-    fill: $timer-color;
+    fill: $settings-color;
     stroke: $session-color;
     stroke-width: 50;
     stroke-dasharray: 0 158;
@@ -36,6 +36,7 @@ body {
 
 svg {
     transform: rotate(-90deg);
+    background: $settings-color;
     background: $timer-color;
     border-radius: 50%;
     height: 350px;
