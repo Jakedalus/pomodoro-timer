@@ -3,9 +3,9 @@
 // [] GIVE ALARM SOUND OPTIONS
 // [x] SAVE SETTINGS/TIMER LENGTHS
 // [x] DON'T LET LENGTHS GO LESS THAN 1 (OR MORE THAN 99?)
-// [] TIMER FUCKS UP WHEN YOU STOP, NEED TO DETACH FROM SYSTEM TIME
+// [x] TIMER MESSES UP WHEN YOU STOP, NEED TO DETACH FROM SYSTEM TIME
 
-function Timer() {
+function timer() {
 if(localStorage.sessionLength == undefined) {
     localStorage.sessionLength = 25;
 }
@@ -19,8 +19,12 @@ var red = "rgb(201, 36, 53)";
 var green = "rgb(0, 163, 128)";
 var lightgray = "rgb(155, 176, 196)";
 
-var workTimer = localStorage.sessionLength * 60 * 1000;
-var breakTimer = localStorage.breakLength * 60 * 1000;
+var workTimer = localStorage.sessionLength * 60;
+var breakTimer = localStorage.breakLength * 60;
+
+// Fast timers for debugging
+//workTimer = 5;
+//breakTimer = 5;
 
 var currentSession = "work";
 
@@ -80,21 +84,21 @@ function printLog() {
         dates.push(date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear());
     }
     
-    console.log("Dates: ", dates);
+//    console.log("Dates: ", dates);
 //    console.log("Completed: ", completed);
 //    console.log(Object.values(completed));
     var max = Math.max(...Object.values(completed));
 //    console.log(max);
 
     var days = Object.keys(completed);
-    console.log("Days: ", days);
+//    console.log("Days: ", days);
     for(var i = 4; i >= 0; i--) {
         var day = dates[i];
-        console.log("Day: ", day);
+//        console.log("Day: ", day);
         
         var cd;
         completed[day] == undefined ? cd = 0 : cd = completed[day];
-        console.log(cd);
+//        console.log(cd);
 //        var li = document.createElement("li");
 //        li.textContent = day + ": " + completed[day];
 //        ul.appendChild(li);
@@ -108,9 +112,9 @@ function printLog() {
         p.textContent = parsedDay;
         p.classList.add("label");
         bar.insertBefore(p, null);
-        console.log("Bar: ", bar);
+//        console.log("Bar: ", bar);
         graph.appendChild(bar);
-        console.log(graph);
+//        console.log(graph);
     };
     
     var yAxis = document.createElement("p");
@@ -189,7 +193,7 @@ function handleTimer() {
         playPause.innerHTML = '&#9658;';
     } else {  // If the timer was paused or not started yet
         controls.removeEventListener("click", handleControls);
-        now = new Date().getTime();
+//        now = new Date().getTime();
         if(wasSwitched) {  // Timer restarted, from session to break or vice versa
             circle.style.strokeDasharray = "0 158";
             wasSwitched = false;
@@ -206,37 +210,44 @@ function handleTimer() {
             console.log("Take a break!");
         }
 
-        then = now + (currentTimer);
-        console.log("Starting...", isPlaying, timeLeft);
+//        then = now + (currentTimer);
+        console.log("Starting...", isPlaying, currentSession, currentTimer);
         playPause.innerHTML = '&#10073;&#10073;';
-        isPlaying = true;
+        isPlaying = false;
 
         t = window.setInterval(function() {
             now = new Date().getTime();
 
-            if(wasPaused) {  // if the timer was paused, reload the time left
-                then = now + timeLeft;
-                wasPaused = false;
-            } else {
-                timeLeft = then - now;
-            }
+//            if(wasPaused) {  // if the timer was paused, reload the time left
+////                then = now + timeLeft;
+//                wasPaused = false;
+//            } else {
+//                timeLeft = currentTimer;
+//            }
 
-            var mins = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            if(!isPlaying && !wasPaused) timeLeft = currentTimer;
+            isPlaying = true;
+            
+            var mins = Math.floor((timeLeft % (60 * 60)) / (60));
             var formattedMins = ("0" + mins).slice(-2);
-            var secs = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            var secs = Math.floor(timeLeft % (60));
             var formattedSecs = ("0" + secs).slice(-2);
-            console.log(mins, secs);
-
+            console.log("Mins: ", mins, "Secs: ", secs);
+            
 
 
             percent = (currentTimer - timeLeft) / currentTimer;
             p = percent * totalCircle;
             circle.style.strokeDasharray = p + " 158";
-            console.log(p);
+            console.log("%: ", p);
             timerText.textContent = formattedMins + ":" + formattedSecs;
-
+            
+            
+            timeLeft--;
+            console.log("Time Left:", timeLeft);
+            
             // Timer runs down
-            if(mins <= 0 && secs <= 0) {  
+            if(timeLeft < 0) {  
                 timerText.textContent = "End";
                 
                 clearInterval(t);
@@ -304,7 +315,7 @@ controls.addEventListener("click", handleControls);
 printLog();
 }
 
-Timer();
+timer();
 
 
 
