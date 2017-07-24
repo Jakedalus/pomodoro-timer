@@ -41,6 +41,9 @@ console.log(today);
 console.log(localStorage);
 var completed = JSON.parse(localStorage.getItem("completed"));
 console.log(JSON.parse(localStorage.getItem("completed")));
+if(completed == null) {
+    completed = {}
+}
 
 console.log("completed: ", completed);
 
@@ -196,9 +199,7 @@ function switchTimer(wasSkipped) {
     if(currentSession == "work") {
         // Keep track of sessions via localStorage
         if(!wasSkipped) {
-            if(completed == null) {
-                completed = {}
-            }
+            
             if(completed[today] != undefined) {
                 completed[today]++;
             } else {
