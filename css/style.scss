@@ -45,8 +45,8 @@ svg {
 
 text {
     transform: rotate(90deg);
-    font-family: "Verdana";
-    font-size: "25";
+//    font-family: "Verdana";
+    font-size: "25px";
     fill: $settings-color;
     transition: text-shadow .1s;
     text-shadow: none;
@@ -60,6 +60,11 @@ text {
     margin-top: 10px;
     
 }
+
+.small-arrows {
+    font-size: 1em;
+}
+
 
 #settings-btn {
     color: $settings-color;

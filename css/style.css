@@ -30,8 +30,7 @@ svg {
 
 text {
   transform: rotate(90deg);
-  font-family: "Verdana";
-  font-size: "25";
+  font-size: "25px";
   fill: #9bb0c4;
   transition: text-shadow .1s;
   text-shadow: none; }
@@ -41,6 +40,9 @@ text {
 
 #controls {
   margin-top: 10px; }
+
+.small-arrows {
+  font-size: 1em; }
 
 #settings-btn {
   color: #9bb0c4; }

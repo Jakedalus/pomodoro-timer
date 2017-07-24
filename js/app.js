@@ -4,6 +4,7 @@
 // [x] SAVE SETTINGS/TIMER LENGTHS
 // [x] DON'T LET LENGTHS GO LESS THAN 1 (OR MORE THAN 99?)
 // [x] TIMER MESSES UP WHEN YOU STOP, NEED TO DETACH FROM SYSTEM TIME
+// [] ADD RESTART AND SKIP CONTROLS
 
 function timer() {
 if(localStorage.sessionLength == undefined) {
@@ -48,6 +49,8 @@ console.log("completed: ", completed);
 var circle = document.querySelector("#circle-timer");
 var timerText = document.querySelector("#timer");
 var playPause = document.querySelector("#play-pause");
+var rewind = document.querySelector("#rewind");
+var skip = document.querySelector("#skip");
 var controls = document.querySelector("#controls");
 var sessionLbl = document.querySelector("#sl");
 var breakLbl = document.querySelector("#bl");
@@ -151,7 +154,6 @@ function stopAlarm() {
     bell.currentTime = 0;
     window.clearInterval(blinker);
     timerText.style.textShadow = 'none';
-    
 }
 
 
@@ -179,6 +181,46 @@ function handleControls(e) {
         }
         
     }
+}
+    
+function switchTimer(wasSkipped) {
+    timerText.textContent = "End";
+                
+    clearInterval(t);
+    if(!wasSkipped) {
+        bell.play();
+        blink();
+    }
+
+
+    if(currentSession == "work") {
+        // Keep track of sessions via localStorage
+        if(!wasSkipped) {
+            if(completed == null) {
+                completed = {}
+            }
+            if(completed[today] != undefined) {
+                completed[today]++;
+            } else {
+                completed[today] = 1;
+            }
+            localStorage.setItem("completed", JSON.stringify(completed));
+            console.log(completed, localStorage);
+            printLog();
+        }
+        
+        
+        currentSession = "break";
+    } else {
+        currentSession = "work";
+    }
+
+    isPlaying = true;
+    wasSwitched = true;
+
+
+
+    handleTimer();
 }
 
 function handleTimer() {
@@ -248,37 +290,7 @@ function handleTimer() {
             
             // Timer runs down
             if(timeLeft < 0) {  
-                timerText.textContent = "End";
-                
-                clearInterval(t);
-                bell.play();
-                blink();
-                
-                if(currentSession == "work") {
-                    // Keep track of sessions via localStorage
-                    if(completed == null) {
-                        completed = {}
-                    }
-                    if(completed[today] != undefined) {
-                        completed[today]++;
-                    } else {
-                        completed[today] = 1;
-                    }
-                    localStorage.setItem("completed", JSON.stringify(completed));
-
-                    console.log(completed, localStorage);
-                    currentSession = "break";
-                    printLog();
-                } else {
-                    currentSession = "work";
-                }
-                
-                isPlaying = true;
-                wasSwitched = true;
-                
-                
-                
-                handleTimer();
+                switchTimer(false);
             }
 
 
@@ -303,6 +315,23 @@ playPause.addEventListener("click", function(e) {
     stopAlarm();
     handleTimer();
 });
+    
+rewind.addEventListener("click", function(e) {
+    timeLeft = currentTimer;
+    isPlaying = true;
+    currentSession == "work" ? timerText.textContent = localStorage.sessionLength + ":00" : 
+                               timerText.textContent = "0" +  localStorage.breakLength + ":00";
+    circle.style.strokeDasharray = "0 158";
+    handleTimer();
+});
+
+skip.addEventListener("click", function(e) {
+    
+    switchTimer(true);
+    currentSession == "work" ? timerText.textContent = localStorage.sessionLength + ":00" : 
+                               timerText.textContent = "0" + localStorage.breakLength + ":00";
+    circle.style.strokeDasharray = "0 158";
+});
 
 timerText.addEventListener("click", function() {
     stopAlarm();
@@ -313,6 +342,7 @@ timerText.addEventListener("click", function() {
 controls.addEventListener("click", handleControls);
 
 printLog();
+    
 }
 
 timer();
