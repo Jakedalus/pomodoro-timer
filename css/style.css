@@ -22,6 +22,8 @@ body {
   stroke-dasharray: 0 158; }
 
 svg {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
   background: #9bb0c4;
   background: #778694;
@@ -29,12 +31,20 @@ svg {
   height: 350px; }
 
 text {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
   transform: rotate(90deg);
   font-family: 'Lato', sans-serif;
   font-size: "25px";
   fill: #9bb0c4;
+  -webkit-transition: text-shadow .1s;
+  -o-transition: text-shadow .1s;
   transition: text-shadow .1s;
   text-shadow: none; }
+
+#play-pause:hover, #rewind:hover, #skip:hover {
+  fill: #778694;
+  stroke: #9bb0c4; }
 
 #cover {
   fill: #2264b2; }
@@ -47,6 +57,10 @@ text {
 
 #settings-btn {
   color: #9bb0c4; }
+
+#settings-btn:hover {
+  color: #778694;
+  text-shadow: -1px -1px 0 #9bb0c4, 1px -1px 0 #9bb0c4, -1px 1px 0 #9bb0c4, 1px 1px 0 #9bb0c4; }
 
 #settings-panel {
   position: relative;
@@ -66,7 +80,9 @@ text {
   border: 2px solid clear;
   background-color: black;
   overflow: hidden;
-  transition: height .5s, width .5s, border .5s, background-color .5s, left .5s; }
+  -o-transition: height .5s, width .5s, border .5s, background-color .5s, left .5s;
+  transition: height .5s, width .5s, border .5s, background-color .5s, left .5s;
+  -webkit-transition: height .5s, width .5s, border .5s, background-color .5s, left .5s; }
 
 #settings.slide-out {
   height: 450px;
@@ -76,20 +92,40 @@ text {
   background-color: #9bb0c4; }
 
 .animate-on {
+  -webkit-animation: .5s forwards turnOn;
   animation: .5s forwards turnOn; }
 
 .animate-off {
+  -webkit-animation: .5s forwards turnOff;
   animation: .5s forwards turnOff; }
 
 @keyframes turnOn {
   from {
+    -webkit-transform: rotate(0turn);
     transform: rotate(0turn); }
   to {
+    -webkit-transform: rotate(0.25turn);
     transform: rotate(0.25turn); } }
 @keyframes turnOff {
   from {
+    -webkit-transform: rotate(0.25turn);
     transform: rotate(0.25turn); }
   to {
+    -webkit-transform: rotate(0turn);
+    transform: rotate(0turn); } }
+@-webkit-keyframes turnOn {
+  from {
+    -webkit-transform: rotate(0turn);
+    transform: rotate(0turn); }
+  to {
+    -webkit-transform: rotate(0.25turn);
+    transform: rotate(0.25turn); } }
+@-webkit-keyframes turnOff {
+  from {
+    -webkit-transform: rotate(0.25turn);
+    transform: rotate(0.25turn); }
+  to {
+    -webkit-transform: rotate(0turn);
     transform: rotate(0turn); } }
 .control {
   display: inline-block;
@@ -138,6 +174,8 @@ a {
   position: relative;
   left: -93%;
   top: -90px;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
   font-size: 1em; }
 

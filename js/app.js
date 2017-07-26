@@ -159,6 +159,7 @@ function stopAlarm() {
     bell.currentTime = 0;
     window.clearInterval(blinker);
     timerText.style.textShadow = 'none';
+    
 }
 
 
@@ -338,8 +339,13 @@ skip.addEventListener("click", function(e) {
 });
 
 timerText.addEventListener("click", function() {
-    stopAlarm();
-    circle.style.strokeDasharray = "0 158";
+    if(!isPlaying && !wasPaused) {
+        stopAlarm();
+        circle.style.strokeDasharray = "0 158";
+        currentSession == "work" ? timerText.textContent = localStorage.sessionLength + ":00" : 
+                               timerText.textContent = "0" + localStorage.breakLength + ":00";
+    }
+    
 });
 
 
