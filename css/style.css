@@ -55,7 +55,7 @@ text {
   left: 100%; }
 
 #settings {
-  font-family: 'Cinzel', serif;
+  font-family: 'Volkhov', serif;
   padding-left: 15px;
   position: absolute;
   z-index: 1;
@@ -130,13 +130,13 @@ a {
 
 .label {
   position: absolute;
-  left: -28px;
+  left: -32px;
   top: 1px;
   font-size: .8em; }
 
 .y-axis {
   position: relative;
-  left: -100%;
+  left: -93%;
   top: -90px;
   transform: rotate(-90deg);
   font-size: 1em; }
