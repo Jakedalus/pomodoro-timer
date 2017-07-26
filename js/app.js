@@ -1,6 +1,9 @@
 
 
 function timer() {
+    
+Notification.requestPermission();
+    
 if(localStorage.sessionLength == undefined) {
     localStorage.sessionLength = 25;
 }
@@ -142,6 +145,10 @@ function setTimer() {
 }
 
 function blink() {
+    if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+        var notification = new Notification(currentSession.charAt(0).toUpperCase() + currentSession.slice(1) + " session over.");
+    }
     blinker = window.setInterval(function() {
         timerText.style.textShadow = timerText.style.textShadow == 'none' ? '0px 0px 25px ' + lightgray : 'none';
     }, 500);
@@ -313,6 +320,7 @@ playPause.addEventListener("click", function(e) {
 });
     
 rewind.addEventListener("click", function(e) {
+    
     timeLeft = currentTimer;
     isPlaying = true;
     currentSession == "work" ? timerText.textContent = localStorage.sessionLength + ":00" : 
