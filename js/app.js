@@ -1,10 +1,4 @@
-// [x] CHANGE SCALE BASED ON MAX POMODOROS
-// [x] STYLE BETTER
-// [] GIVE ALARM SOUND OPTIONS
-// [x] SAVE SETTINGS/TIMER LENGTHS
-// [x] DON'T LET LENGTHS GO LESS THAN 1 (OR MORE THAN 99?)
-// [x] TIMER MESSES UP WHEN YOU STOP, NEED TO DETACH FROM SYSTEM TIME
-// [] ADD RESTART AND SKIP CONTROLS
+
 
 function timer() {
 if(localStorage.sessionLength == undefined) {
@@ -94,6 +88,7 @@ function printLog() {
 //    console.log("Completed: ", completed);
 //    console.log(Object.values(completed));
     var max = Math.max(...Object.values(completed));
+    if(max <= 20) max = 20;
 //    console.log(max);
 
     var days = Object.keys(completed);

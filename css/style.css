@@ -30,6 +30,7 @@ svg {
 
 text {
   transform: rotate(90deg);
+  font-family: 'Lato', sans-serif;
   font-size: "25px";
   fill: #9bb0c4;
   transition: text-shadow .1s;
@@ -51,25 +52,26 @@ text {
   position: relative;
   display: inline-block;
   top: 0;
-  left: 0; }
+  left: 100%; }
 
 #settings {
-  /*    visibility: hidden;*/
+  font-family: 'Cinzel', serif;
   padding-left: 15px;
   position: absolute;
   z-index: 1;
-  left: 350%;
+  left: 300%;
   margin-left: -60px;
   height: 0px;
   width: 0px;
   border: 2px solid clear;
   background-color: black;
   overflow: hidden;
-  transition: height .5s, width .5s, border .5s, background-color .5s; }
+  transition: height .5s, width .5s, border .5s, background-color .5s, left .5s; }
 
 #settings.slide-out {
   height: 450px;
   width: 250px;
+  left: -200px;
   border: 2px solid black;
   background-color: #9bb0c4; }
 
@@ -128,7 +130,7 @@ a {
 
 .label {
   position: absolute;
-  left: -30px;
+  left: -28px;
   top: 1px;
   font-size: .8em; }
 
@@ -175,6 +177,9 @@ a {
   body {
     width: 80%; }
 
+  p {
+    margin-top: -10px; }
+
   #container {
     width: 200px; }
 
@@ -193,7 +198,8 @@ a {
 
   #settings.slide-out {
     height: 250px;
-    width: 200px; }
+    width: 200px;
+    left: -160px; }
 
   .y-axis {
     left: -90%; }
