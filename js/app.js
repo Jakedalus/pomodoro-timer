@@ -91,7 +91,7 @@ function printLog() {
 //    console.log("Completed: ", completed);
 //    console.log(Object.values(completed));
     var max = Math.max(...Object.values(completed));
-    if(max <= 20) max = 20;
+    if(max <= 12) max = 12;
 //    console.log(max);
 
     var days = Object.keys(completed);
@@ -108,6 +108,7 @@ function printLog() {
 //        ul.appendChild(li);
         
         var bar = document.createElement("div");
+        bar.title = cd;
         var width = (cd / max) * 100;
         bar.classList.add("bar");
         bar.style.width = width + "%";
