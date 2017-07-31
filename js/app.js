@@ -21,8 +21,8 @@ var workTimer = localStorage.sessionLength * 60;
 var breakTimer = localStorage.breakLength * 60;
 
 // Fast timers for debugging
-//workTimer = 5;
-//breakTimer = 5;
+workTimer = 5;
+breakTimer = 5;
 
 var currentSession = "work";
 
@@ -58,9 +58,13 @@ var settingsBtn = document.querySelector("#settings-btn");
 var settingsPanel = document.querySelector("#settings");
 var log = document.querySelector("#log");
 var graph = document.querySelector("#graph");
+var volume = document.querySelector("#volume");
+var speaker = document.querySelector("#vol-symbol");
 
 // Alarm sound
-var bell = new Audio("https://u7547051.dl.dropboxusercontent.com/u/7547051/assets/pomodoro-timer/346328__isteak__bright-tibetan-bell-ding-b-note-cleaner.wav");
+var bell = new Audio("bell.wav");
+    
+console.log(bell, bell.volume);
 
 timerText.textContent = localStorage.sessionLength + ":00";
 circle.style.strokeDasharray = p + " 158";
@@ -153,6 +157,7 @@ function blink() {
     blinker = window.setInterval(function() {
         timerText.style.textShadow = timerText.style.textShadow == 'none' ? '0px 0px 25px ' + lightgray : 'none';
     }, 500);
+    timerText.style.cursor = "pointer";
 }
 
 function stopAlarm() {
@@ -160,7 +165,7 @@ function stopAlarm() {
     bell.currentTime = 0;
     window.clearInterval(blinker);
     timerText.style.textShadow = 'none';
-    
+    timerText.style.cursor = "auto";
 }
 
 
@@ -347,6 +352,13 @@ timerText.addEventListener("click", function() {
                                timerText.textContent = "0" + localStorage.breakLength + ":00";
     }
     
+});
+    
+volume.addEventListener("change", function() {
+    bell.volume = volume.value / 100;
+    if(volume.value == 0) speaker.textContent = "volume_mute";
+    else if (volume.value < 50) speaker.textContent = "volume_down";
+    else speaker.textContent = "volume_up";
 });
 
 

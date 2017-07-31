@@ -70,6 +70,7 @@ text {
 
 #settings {
   font-family: 'Volkhov', serif;
+  font-size: .8em;
   padding-left: 15px;
   position: absolute;
   z-index: 1;
@@ -127,10 +128,55 @@ text {
   to {
     -webkit-transform: rotate(0turn);
     transform: rotate(0turn); } }
+#vol-symbol {
+  color: black;
+  font-size: .8em; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  position: relative;
+  top: -.6em;
+  padding: 0;
+  /* your slider styles */
+  background: #2264b2;
+  border: 2p solid black;
+  height: .5em;
+  outline: none; }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  /* your thumb styles */
+  background: #778694;
+  border: 2px solid black;
+  height: .8em;
+  width: .8em;
+  border-radius: 3px; }
+
+input[type=range]::-moz-range-thumb {
+  /* again your thumb styles */ }
+
+input[type=range]::-ms-thumb {
+  /* should come after -webkit- */
+  /* again your thumb styles */
+  /* may require different margins */ }
+
+input[type=range]::-webkit-slider-runnable-track {
+  /* your track styles */ }
+
+input[type=range]::-moz-range-track {
+  /* again your track styles */ }
+
+input[type=range]::-ms-track {
+  /* should come after -webkit- */
+  border-color: transparent;
+  color: transparent;
+  /* again your track styles */ }
+
 .control {
   display: inline-block;
   width: 60%;
-  height: 100px; }
+  height: 70px; }
 
 #log {
   width: 60%; }
@@ -202,6 +248,9 @@ a {
   #settings-btn {
     font-size: 1.5em; }
 
+  #vol-symbol {
+    font-size: 1.1em; }
+
   #settings-panel {
     font-size: .8em;
     width: 180px; }
@@ -209,8 +258,11 @@ a {
   #settings {
     left: 30%; }
 
+  .x-axis {
+    top: 12px; }
+
   .slide-out {
-    height: 320px !important; } }
+    height: 360px !important; } }
 @media (max-width: 400px) {
   body {
     width: 80%; }
@@ -230,12 +282,15 @@ a {
   #settings-btn {
     font-size: 1.5em; }
 
+  #vol-symbol {
+    font-size: 1.5em; }
+
   #settings-panel {
     font-size: .6em;
     width: 220px; }
 
   #settings.slide-out {
-    height: 250px;
+    height: 330px !important;
     width: 200px;
     left: -160px; }
 
@@ -243,6 +298,6 @@ a {
     left: -90%; }
 
   .x-axis {
-    top: 20px; } }
+    top: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
