@@ -21,8 +21,8 @@ var workTimer = localStorage.sessionLength * 60;
 var breakTimer = localStorage.breakLength * 60;
 
 // Fast timers for debugging
-workTimer = 5;
-breakTimer = 5;
+//workTimer = 5;
+//breakTimer = 5;
 
 var currentSession = "work";
 
