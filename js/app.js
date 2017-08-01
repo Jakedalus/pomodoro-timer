@@ -307,7 +307,7 @@ function handleTimer() {
 }
     
 function handleSettingsCloseClick(e) {
-//    console.log(e.target.tagName);
+    console.log(e.target.tagName);
     if(e.target.tagName == "HTML") closeSettingsPanel();
 }
     
