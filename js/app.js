@@ -305,16 +305,28 @@ function handleTimer() {
             }, 1000);
     }
 }
+    
+function handleSettingsCloseClick(e) {
+//    console.log(e.target.tagName);
+    if(e.target.tagName == "HTML") closeSettingsPanel();closeSettingsPanel
+}
+    
+function closeSettingsPanel() {
+    settingsBtn.classList.remove("animate-on");
+    settingsBtn.classList.add("animate-off");
+    settingsPanel.classList.remove("slide-out");
+    document.removeEventListener("click", handleSettingsCloseClick);
+}
 
 settingsBtn.addEventListener("click", function(e) {
     if(!settingsPanel.classList.contains("slide-out")) {
         settingsBtn.classList.remove("animate-off");
         settingsBtn.classList.add("animate-on");
         settingsPanel.classList.add("slide-out");
+        
+        document.addEventListener("click", handleSettingsCloseClick);
     } else {    
-        settingsBtn.classList.remove("animate-on");
-        settingsBtn.classList.add("animate-off");
-        settingsPanel.classList.remove("slide-out");
+        closeSettingsPanel();
     } 
 });
 
@@ -361,6 +373,10 @@ volume.addEventListener("change", function() {
 
 
 controls.addEventListener("click", handleControls);
+    
+document.addEventListener("click", function() {
+     
+});
 
 printLog();
     
