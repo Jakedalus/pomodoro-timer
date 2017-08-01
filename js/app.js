@@ -140,11 +140,9 @@ function printLog() {
 
 // Reset timer after changing settings
 function setTimer() {
-    now = new Date().getTime();
-    workTimer =localStorage.sessionLength * 60 * 1000;
+    workTimer = localStorage.sessionLength * 60;
     console.log(workTimer);
-    breakTimer = localStorage.breakLength * 60 * 1000;
-    then = now + (workTimer);
+    breakTimer = localStorage.breakLength * 60;
     timerText.textContent =localStorage.sessionLength + ":00";
     wasPaused = false;
 }
