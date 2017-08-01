@@ -307,8 +307,8 @@ function handleTimer() {
 }
     
 function handleSettingsCloseClick(e) {
-    console.log(e.target.tagName);
-    if(e.target.tagName == "HTML") closeSettingsPanel();
+//    console.log(e.target.tagName);
+    if(e.target.tagName == "HTML" || e.target.tagName == "BODY") closeSettingsPanel();
 }
     
 function closeSettingsPanel() {
