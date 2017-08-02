@@ -28,8 +28,8 @@ var longBreakTimer = localStorage.longBreakLength * 60;
 var currentTimer = workTimer;
 
 // Fast timers for debugging
-workTimer = 7;
-breakTimer = 5;
+//workTimer = 7;
+//breakTimer = 5;
 //longBreakTimer = 10;
 
 var currentSession = "work";
