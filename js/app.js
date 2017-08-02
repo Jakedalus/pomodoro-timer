@@ -10,6 +10,10 @@ if(localStorage.sessionLength == undefined) {
 if(localStorage.breakLength == undefined) {
     localStorage.breakLength = 5;
 }
+if(localStorage.longBreakLength== undefined) {
+    localStorage.longBreakLength = 15;
+}
+
 
 console.log(localStorage.sessionLength);
 
@@ -19,10 +23,14 @@ var lightgray = "rgb(155, 176, 196)";
 
 var workTimer = localStorage.sessionLength * 60;
 var breakTimer = localStorage.breakLength * 60;
+var longBreakTimer = localStorage.longBreakLength * 60;
+
+var currentTimer = workTimer;
 
 // Fast timers for debugging
-//workTimer = 5;
-//breakTimer = 5;
+workTimer = 7;
+breakTimer = 5;
+//longBreakTimer = 10;
 
 var currentSession = "work";
 
@@ -54,6 +62,7 @@ var skip = document.querySelector("#skip");
 var controls = document.querySelector("#controls");
 var sessionLbl = document.querySelector("#sl");
 var breakLbl = document.querySelector("#bl");
+var longBreakLbl = document.querySelector("#lbl");
 var settingsBtn = document.querySelector("#settings-btn");
 var settingsPanel = document.querySelector("#settings");
 var log = document.querySelector("#log");
@@ -70,6 +79,7 @@ timerText.textContent = localStorage.sessionLength + ":00";
 circle.style.strokeDasharray = p + " 158";
 sessionLbl.textContent = localStorage.sessionLength;
 breakLbl.textContent = localStorage.breakLength;
+longBreakLbl.textContent = localStorage.longBreakLength;
 
 var timerStarted = false;
 var isPlaying = false;
@@ -141,9 +151,24 @@ function printLog() {
 // Reset timer after changing settings
 function setTimer() {
     workTimer = localStorage.sessionLength * 60;
-    console.log(workTimer);
+//    console.log(workTimer);
     breakTimer = localStorage.breakLength * 60;
-    timerText.textContent =localStorage.sessionLength + ":00";
+    longBreakTimer = localStorage.longBreakLength * 60; 
+    
+//    var mins = Math.floor((timeLeft % (60 * 60)) / (60));
+//    var formattedMins = ("0" + mins).slice(-2);
+    var formattedMins;
+    
+    if(currentSession == "work") {
+        formattedMins = ("0" + localStorage.sessionLength).slice(-2);
+    } else if(currentSession == "break") { 
+        formattedMins = ("0" + localStorage.breakLength).slice(-2);
+    } else { 
+        formattedMins = ("0" + localStorage.longBreakLength).slice(-2);
+    }
+    
+    timerText.textContent = formattedMins + ":00";
+    
     wasPaused = false;
 }
 
@@ -189,7 +214,16 @@ function handleControls(e) {
             setTimer();
             breakLbl.textContent = localStorage.breakLength;
         }
-        
+    } else if(clicked == "lub") {
+        localStorage.longBreakLength++;
+        setTimer();
+        longBreakLbl.textContent = localStorage.longBreakLength;
+    } else if(clicked == "ldb") {
+        if(localStorage.longBreakLength > 1) {
+            localStorage.longBreakLength--;
+            setTimer();
+            longBreakLbl.textContent = localStorage.longBreakLength;
+        }
     }
 }
     
@@ -217,8 +251,13 @@ function switchTimer(wasSkipped) {
             printLog();
         }
         
+        if(completed[today] % 4 == 0) {
+            currentSession = "longbreak";
+        } else {
+            currentSession = "break";
+        }
         
-        currentSession = "break";
+        
     } else {
         currentSession = "work";
     }
@@ -254,10 +293,14 @@ function handleTimer() {
             currentTimer = workTimer
             circle.style.stroke = red;
             console.log("Work!!!");
-        } else {
+        } else if(currentSession == "break") {
             currentTimer = breakTimer;
             circle.style.stroke = green;
             console.log("Take a break!");
+        } else {
+            currentTimer = longBreakTimer;
+            circle.style.stroke = green;
+            console.log("Take a LONG break!");
         }
 
 //        then = now + (currentTimer);
@@ -340,8 +383,13 @@ rewind.addEventListener("click", function(e) {
     
     timeLeft = currentTimer;
     isPlaying = true;
-    currentSession == "work" ? timerText.textContent = localStorage.sessionLength + ":00" : 
-                               timerText.textContent = "0" +  localStorage.breakLength + ":00";
+    if(currentSession == "work") {
+        timerText.textContent = ("0" + localStorage.sessionLength).slice(-2) + ":00";
+    } else if (currentSession == "break") {
+        timerText.textContent = ("0" + localStorage.breakLength).slice(-2) + ":00";
+    } else {
+        timerText.textContent = ("0" + localStorage.longBreakLength).slice(-2) + ":00";
+    }
     circle.style.strokeDasharray = "0 158";
     handleTimer();
 });
@@ -349,8 +397,13 @@ rewind.addEventListener("click", function(e) {
 skip.addEventListener("click", function(e) {
     
     switchTimer(true);
-    currentSession == "work" ? timerText.textContent = localStorage.sessionLength + ":00" : 
-                               timerText.textContent = "0" + localStorage.breakLength + ":00";
+    if(currentSession == "work") {
+        timerText.textContent = ("0" + localStorage.sessionLength).slice(-2) + ":00";
+    } else if (currentSession == "break") {
+        timerText.textContent = ("0" + localStorage.breakLength).slice(-2) + ":00";
+    } else {
+        timerText.textContent = ("0" + localStorage.longBreakLength).slice(-2) + ":00";
+    }
     circle.style.strokeDasharray = "0 158";
 });
 
@@ -358,8 +411,13 @@ timerText.addEventListener("click", function() {
     if(!isPlaying && !wasPaused) {
         stopAlarm();
         circle.style.strokeDasharray = "0 158";
-        currentSession == "work" ? timerText.textContent = localStorage.sessionLength + ":00" : 
-                               timerText.textContent = "0" + localStorage.breakLength + ":00";
+        if(currentSession == "work") {
+            timerText.textContent = ("0" + localStorage.sessionLength).slice(-2) + ":00";
+        } else if (currentSession == "break") {
+            timerText.textContent = ("0" + localStorage.breakLength).slice(-2) + ":00";
+        } else {
+            timerText.textContent = ("0" + localStorage.longBreakLength).slice(-2) + ":00";
+        }
     }
     
 });
