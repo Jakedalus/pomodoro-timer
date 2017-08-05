@@ -28,9 +28,9 @@ var longBreakTimer = localStorage.longBreakLength * 60;
 var currentTimer = workTimer;
 
 // Fast timers for debugging
-//workTimer = 7;
-//breakTimer = 5;
-//longBreakTimer = 10;
+workTimer = 7;
+breakTimer = 5;
+longBreakTimer = 10;
 
 var currentSession = "work";
 
@@ -41,7 +41,8 @@ var now, then;
 
 // Set up localStorage completed
 var t = new Date();
-var today = t.getMonth() + "/" + t.getDate() + "/" + t.getFullYear();
+
+var today = t.getMonth()+1 + "/" + t.getDate() + "/" + t.getFullYear();
 console.log(today);
 console.log(localStorage);
 var completed = JSON.parse(localStorage.getItem("completed"));
@@ -98,7 +99,7 @@ function printLog() {
     
     for(var i = 0; i < 5; i++) {
         var date = new Date(todaysDate - (i * oneDay));
-        dates.push(date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear());
+        dates.push(date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear());
     }
     
 //    console.log("Dates: ", dates);
