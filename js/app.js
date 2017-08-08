@@ -28,8 +28,8 @@ var longBreakTimer = localStorage.longBreakLength * 60;
 var currentTimer = workTimer;
 
 // Fast timers for debugging
-//workTimer = 7;
-//breakTimer = 5;
+workTimer = 3;
+breakTimer = 3;
 //longBreakTimer = 10;
 
 var currentSession = "work";
@@ -39,11 +39,7 @@ var totalCircle = 158;
 var p = percent * totalCircle;
 var now, then;
 
-// Set up localStorage completed
-var t = new Date();
 
-var today = t.getMonth()+1 + "/" + t.getDate() + "/" + t.getFullYear();
-console.log(today);
 console.log(localStorage);
 var completed = JSON.parse(localStorage.getItem("completed"));
 console.log(JSON.parse(localStorage.getItem("completed")));
@@ -236,6 +232,11 @@ function switchTimer(wasSkipped) {
         bell.play();
         blink();
     }
+    
+    // Set up localStorage completed
+    var t = new Date();
+    var today = t.getMonth()+1 + "/" + t.getDate() + "/" + t.getFullYear();
+    console.log(today);
 
 
     if(currentSession == "work") {
