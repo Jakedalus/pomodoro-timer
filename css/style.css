@@ -1,11 +1,17 @@
 body {
   margin: 0 auto;
   width: 80%;
-  background-color: #2264b2; }
+  background-color: #2e1c05; }
+
+h1 {
+  font-family: 'Playball', cursive;
+  color: #E5AB60;
+  font-size: 4.5em;
+  text-align: center; }
 
 #container {
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 30px;
   width: 350px; }
 
 /*
@@ -16,8 +22,8 @@ body {
 }
 */
 #circle-timer {
-  fill: #9bb0c4;
-  stroke: #c92435;
+  fill: #E5AB60;
+  stroke: orangered;
   stroke-width: 50;
   stroke-dasharray: 0 158; }
 
@@ -25,8 +31,8 @@ svg {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  background: #9bb0c4;
-  background: #778694;
+  background: #E5AB60;
+  background: #E5AB60;
   border-radius: 50%;
   height: 350px; }
 
@@ -36,18 +42,18 @@ text {
   transform: rotate(90deg);
   font-family: 'Lato', sans-serif;
   font-size: "25px";
-  fill: #9bb0c4;
+  fill: #E5AB60;
   -webkit-transition: text-shadow .1s;
   -o-transition: text-shadow .1s;
   transition: text-shadow .1s;
   text-shadow: none; }
 
 #play-pause:hover, #rewind:hover, #skip:hover {
-  fill: #778694;
-  stroke: #9bb0c4; }
+  fill: #2e1c05;
+  stroke: #E5AB60; }
 
 #cover {
-  fill: #2264b2; }
+  fill: #2e1c05; }
 
 #controls {
   margin-top: 10px; }
@@ -56,11 +62,11 @@ text {
   font-size: 1em; }
 
 #settings-btn {
-  color: #9bb0c4; }
+  color: #E5AB60; }
 
 #settings-btn:hover {
-  color: #778694;
-  text-shadow: -1px -1px 0 #9bb0c4, 1px -1px 0 #9bb0c4, -1px 1px 0 #9bb0c4, 1px 1px 0 #9bb0c4; }
+  color: #2e1c05;
+  text-shadow: -1px -1px 0 #E5AB60, 1px -1px 0 #E5AB60, -1px 1px 0 #E5AB60, 1px 1px 0 #E5AB60; }
 
 #settings-panel {
   position: relative;
@@ -90,7 +96,7 @@ text {
   width: 250px;
   left: -200px;
   border: 2px solid black;
-  background-color: #9bb0c4; }
+  background-color: #E5AB60; }
 
 .animate-on {
   -webkit-animation: .5s forwards turnOn;
@@ -138,7 +144,7 @@ input[type=range] {
   top: -.6em;
   padding: 0;
   /* your slider styles */
-  background: #2264b2;
+  background: #2e1c05;
   border: 2p solid black;
   height: .5em;
   outline: none; }
@@ -147,7 +153,7 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   box-sizing: content-box;
   /* your thumb styles */
-  background: #778694;
+  background: #E5AB60;
   border: 2px solid black;
   height: .8em;
   width: .8em;
@@ -203,7 +209,7 @@ a {
   left: 40%; }
 
 .bar {
-  background-color: #00a380;
+  background-color: #40ffa5;
   position: relative;
   height: 16px;
   margin-top: 8px;
@@ -236,6 +242,9 @@ a {
   body {
     width: 50%; }
 
+  h1 {
+    font-size: 3.8em; }
+
   #container {
     width: 250px; }
 
@@ -266,6 +275,9 @@ a {
 @media (max-width: 400px) {
   body {
     width: 80%; }
+
+  h1 {
+    font-size: 3em; }
 
   p {
     margin-top: -10px; }
