@@ -62,7 +62,8 @@ text {
   font-size: 1em; }
 
 #settings-btn {
-  color: #E5AB60; }
+  color: #E5AB60;
+  display: inline-block; }
 
 #settings-btn:hover {
   color: #2e1c05;
@@ -71,7 +72,7 @@ text {
 #settings-panel {
   position: relative;
   display: inline-block;
-  top: 0;
+  top: -90px;
   left: 100%; }
 
 #settings {
@@ -262,7 +263,9 @@ a {
 
   #settings-panel {
     font-size: .8em;
-    width: 180px; }
+    width: 180px;
+    top: -72px;
+    left: 105%; }
 
   #settings {
     left: 30%; }
@@ -299,7 +302,8 @@ a {
 
   #settings-panel {
     font-size: .6em;
-    width: 220px; }
+    width: 220px;
+    top: -58px; }
 
   #settings.slide-out {
     height: 360px !important;

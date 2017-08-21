@@ -22,6 +22,7 @@ h1 {
     font-family: 'Playball', cursive;
     color: $timer-color;
     font-size: 4.5em;
+
     text-align: center;
 }
 
@@ -95,6 +96,7 @@ text {
 
 #settings-btn {
     color: $settings-color;
+    display: inline-block;
 }
 
 #settings-btn:hover {
@@ -110,7 +112,8 @@ text {
 #settings-panel {
     position: relative;
     display: inline-block;
-    top: 0;
+    
+    top: -90px;
     left: 100%;   
 
 }
@@ -361,6 +364,8 @@ a {
     #settings-panel {
         font-size: .8em;
         width: 180px;
+        top: -72px;
+        left: 105%;
     }
     
     #settings {
@@ -412,6 +417,7 @@ a {
     #settings-panel {
         font-size: .6em;
         width: 220px; 
+        top: -58px;
     }
     
     #settings.slide-out {
