@@ -5,7 +5,7 @@ body {
 
 h1 {
   font-family: 'Playball', cursive;
-  color: #E5AB60;
+  color: #e5ab60;
   font-size: 4.5em;
   text-align: center; }
 
@@ -22,7 +22,7 @@ h1 {
 }
 */
 #circle-timer {
-  fill: #E5AB60;
+  fill: #e5ab60;
   stroke: orangered;
   stroke-width: 50;
   stroke-dasharray: 0 158; }
@@ -31,8 +31,8 @@ svg {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  background: #E5AB60;
-  background: #E5AB60;
+  background: #e5ab60;
+  background: #e5ab60;
   border-radius: 50%;
   height: 350px; }
 
@@ -42,7 +42,7 @@ text {
   transform: rotate(90deg);
   font-family: 'Lato', sans-serif;
   font-size: "25px";
-  fill: #E5AB60;
+  fill: #e5ab60;
   -webkit-transition: text-shadow .1s;
   -o-transition: text-shadow .1s;
   transition: text-shadow .1s;
@@ -50,7 +50,7 @@ text {
 
 #play-pause:hover, #rewind:hover, #skip:hover {
   fill: #2e1c05;
-  stroke: #E5AB60; }
+  stroke: #e5ab60; }
 
 #cover {
   fill: #2e1c05; }
@@ -62,12 +62,12 @@ text {
   font-size: 1em; }
 
 #settings-btn {
-  color: #E5AB60;
+  color: #e5ab60;
   display: inline-block; }
 
 #settings-btn:hover {
   color: #2e1c05;
-  text-shadow: -1px -1px 0 #E5AB60, 1px -1px 0 #E5AB60, -1px 1px 0 #E5AB60, 1px 1px 0 #E5AB60; }
+  text-shadow: -1px -1px 0 #e5ab60, 1px -1px 0 #e5ab60, -1px 1px 0 #e5ab60, 1px 1px 0 #e5ab60; }
 
 #settings-panel {
   position: relative;
@@ -97,7 +97,7 @@ text {
   width: 250px;
   left: -200px;
   border: 2px solid black;
-  background-color: #E5AB60; }
+  background-color: #e5ab60; }
 
 .animate-on {
   -webkit-animation: .5s forwards turnOn;
@@ -154,7 +154,7 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   box-sizing: content-box;
   /* your thumb styles */
-  background: #E5AB60;
+  background: #e5ab60;
   border: 2px solid black;
   height: .8em;
   width: .8em;
@@ -210,7 +210,7 @@ a {
   left: 40%; }
 
 .bar {
-  background-color: #40ffa5;
+  background-color: #14cc41;
   position: relative;
   height: 16px;
   margin-top: 8px;

@@ -17,9 +17,9 @@ if(localStorage.longBreakLength== undefined) {
 
 console.log(localStorage.sessionLength);
 
-var red = "rgb(201, 36, 53)";
-var green = "rgb(0, 163, 128)";
-var lightgray = "rgb(155, 176, 196)";
+var red = "rgb(255, 69, 0)";
+var green = "rgb(20, 204, 65)";
+//var lightgray = "rgb(155, 176, 196)";
 
 var workTimer = localStorage.sessionLength * 60;
 var breakTimer = localStorage.breakLength * 60;
