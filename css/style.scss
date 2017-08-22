@@ -364,7 +364,7 @@ a {
     
     #settings-panel {
         font-size: .8em;
-        width: 180px;
+//        width: 180px;
         top: -72px;
         left: 105%;
     }
@@ -384,7 +384,7 @@ a {
 
 @media (max-width: 400px) { 
     body {
-        width: 80%;
+        width: 50%;
     }
     
     h1 {
@@ -417,7 +417,7 @@ a {
     
     #settings-panel {
         font-size: .6em;
-        width: 220px; 
+//        width: 0%; 
         top: -58px;
     }
     

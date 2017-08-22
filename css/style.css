@@ -263,7 +263,6 @@ a {
 
   #settings-panel {
     font-size: .8em;
-    width: 180px;
     top: -72px;
     left: 105%; }
 
@@ -277,7 +276,7 @@ a {
     height: 410px !important; } }
 @media (max-width: 400px) {
   body {
-    width: 80%; }
+    width: 50%; }
 
   h1 {
     font-size: 3em; }
@@ -302,7 +301,6 @@ a {
 
   #settings-panel {
     font-size: .6em;
-    width: 220px;
     top: -58px; }
 
   #settings.slide-out {
