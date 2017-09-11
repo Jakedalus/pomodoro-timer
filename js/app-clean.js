@@ -19,7 +19,7 @@ if(localStorage.longBreakLength== undefined) {
 
 var red = "rgb(255, 69, 0)";
 var green = "rgb(20, 204, 65)";
-//var lightgray = "rgb(155, 176, 196)";
+var tan = "rgb(229, 171, 96)";
 
 var workTimer = localStorage.sessionLength * 60;
 var breakTimer = localStorage.breakLength * 60;
@@ -175,7 +175,7 @@ function blink() {
         var notification = new Notification(currentSession.charAt(0).toUpperCase() + currentSession.slice(1) + " session over.");
     }
     blinker = window.setInterval(function() {
-        timerText.style.textShadow = timerText.style.textShadow == 'none' ? '0px 0px 25px ' + lightgray : 'none';
+        timerText.style.textShadow = timerText.style.textShadow == 'none' ? '0px 0px 25px ' + tan : 'none';
     }, 500);
     timerText.style.cursor = "pointer";
 }
