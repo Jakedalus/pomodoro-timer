@@ -284,6 +284,7 @@ function handleTimer() {
         playPause.innerHTML = '&#9658;';
     } else {  // If the timer was paused or not started yet
         controls.removeEventListener("click", handleControls);
+        clearInterval(t);  
 //        now = new Date().getTime();
         if(wasSwitched) {  // Timer restarted, from session to break or vice versa
             circle.style.strokeDasharray = "0 158";

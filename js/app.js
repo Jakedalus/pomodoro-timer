@@ -273,17 +273,17 @@ function switchTimer(wasSkipped) {
 }
 
 function handleTimer() {
-    
+    clearInterval(t);   
     // Check if the timer is already running
     if(isPlaying) {
         controls.addEventListener("click", handleControls);
         console.log("Pausing...", isPlaying, timeLeft);
-        clearInterval(t);
         isPlaying = false;
         wasSwitched ? wasPaused = false : wasPaused = true;
         playPause.innerHTML = '&#9658;';
     } else {  // If the timer was paused or not started yet
         controls.removeEventListener("click", handleControls);
+
 //        now = new Date().getTime();
         if(wasSwitched) {  // Timer restarted, from session to break or vice versa
             circle.style.strokeDasharray = "0 158";
@@ -309,6 +309,8 @@ function handleTimer() {
         console.log("Starting...", isPlaying, currentSession, currentTimer);
         playPause.innerHTML = '&#10073;&#10073;';
         isPlaying = false;
+
+
 
         t = window.setInterval(function() {
             now = new Date().getTime();
@@ -375,11 +377,15 @@ settingsBtn.addEventListener("click", function(e) {
     } 
 });
 
-
-playPause.addEventListener("click", function(e) {    
+function handlePlayPause() {
     stopAlarm();
     handleTimer();
-});
+}
+
+
+playPause.addEventListener("click", handlePlayPause);
+
+
     
 rewind.addEventListener("click", function(e) {
     
